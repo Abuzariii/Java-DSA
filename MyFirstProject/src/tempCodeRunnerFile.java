@@ -1,2 +1,1 @@
-t);
-        System.out.println(Arrays.toString(index));
+int i = 0; i < digits.length; i++
