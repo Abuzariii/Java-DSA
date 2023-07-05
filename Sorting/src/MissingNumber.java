@@ -1,3 +1,5 @@
+// Leetcode url : https://leetcode.com/problems/missing-number/
+
 public class MissingNumber {
     public static void main(String[] args) {
         int[] nums = { 4, 0, 2, 1, 3, 6 };
