@@ -1,6 +1,8 @@
+// Leetcode url : https://leetcode.com/problems/first-missing-positive/
+
 public class FirstMissingPositive {
     public static void main(String[] args) {
-        int[] array = { 1, 2, 0, 3, 5 };
+        int[] array = { 1, 2, 0, 3, 5, -1, -3 };
 
         System.out.println(firstPositiveMissing(array));
     }
@@ -8,7 +10,7 @@ public class FirstMissingPositive {
     static int firstPositiveMissing(int[] nums) {
         int n = nums.length;
 
-        // Move each positive number to its correct position
+        // Cyclic sort : Move each positive number to its correct position using
         for (int i = 0; i < n; i++) {
             while (nums[i] > 0 && nums[i] <= n && nums[nums[i] - 1] != nums[i]) {
                 int correctIndex = nums[i] - 1;
@@ -27,19 +29,4 @@ public class FirstMissingPositive {
         // If all numbers are correct, return n + 1 as the missing number
         return n + 1;
     }
-
-    // static void bubbleSort(int[] array) {
-    // boolean isSorted = false;
-    // while (!isSorted) {
-    // isSorted = true;
-    // for (int i = 0; i < array.length - 1; i++) {
-    // if (array[i] > array[i + 1]) {
-    // int temp = array[i];
-    // array[i] = array[i + 1];
-    // array[i + 1] = temp;
-    // isSorted = false;
-    // }
-    // }
-    // }
-    // }
 }
