@@ -1,4 +1,7 @@
-i = 0;
-        while (i < array.length) {
-            int correctIndex = array[i] - 1;
-            if (array[i] != array[correctIndex]) {
+bubbleSort(nums);
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] > 0 && nums[i] + 1 < nums[i + 1]) {
+                return nums[i] + 1;
+            }
+        }
+        return nums[nums.length - 1] + 1;
