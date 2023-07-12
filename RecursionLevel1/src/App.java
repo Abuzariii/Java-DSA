@@ -1,33 +1,22 @@
 public class App {
-
-    // static boolean isPalindrome(int n) {
-    // if (printDigits(n) == printDigitsReverse(n)) {
-    // }
-    // }
-    static int sum = 0;
+    public static void main(String[] args) throws Exception {
+        printDigitsReverse(1203);
+    }
 
     static void printDigitsReverse(int n) {
         if (n == 0) {
             return;
         }
-        int rem = n & 10;
-        sum = sum * 10 + rem;
+        System.out.print((n % 10) + " ");
         printDigitsReverse(n / 10);
     }
 
-    public static void main(String[] args) throws Exception {
-        printDigitsReverse(132660);
-        // printDigits(4333);
-    }
-
-    static int printDigits(int n) {
+    static void printDigits(int n) {
         if (n == 0) {
-            return 0;
+            return;
         }
-        // Reverse it by swapping up down the below two lines
         printDigits(n / 10);
-        System.out.print((n % 10));
-        return n % 10;
+        System.out.print((n % 10) + " ");
     }
 
     static int prodDigits(int n) {

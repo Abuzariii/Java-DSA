@@ -1,3 +1,3 @@
-if (n == 0) {
-            return;
-        }
+;
+        System.out.println("Number: " + number);
+        System.out.println("Is Palindrome: " + isPalindrome(number));
