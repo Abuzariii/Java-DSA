@@ -76,4 +76,19 @@ public class Practise {
         }
         return count;
     }
+
+    // Doesn't print the last zero, the other method of doing it by converting the
+    // entire number into a character array and printing every digit is better
+    static void printDigits(int number) {
+        int length = String.valueOf(number).length();
+
+        while (number > 0) {
+            // Get first digit and print it
+            int firstDigit = number / (int) Math.pow(10, length - 1);
+            System.out.print(firstDigit);
+            // Update the Number by stripping the first digit
+            number = number % (int) Math.pow(10, length - 1);
+            length--; // Decrease the length by 1
+        }
+    }
 }
