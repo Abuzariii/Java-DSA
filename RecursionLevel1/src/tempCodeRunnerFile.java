@@ -1,3 +1,5 @@
-;
-        System.out.println("Number: " + number);
-        System.out.println("Is Palindrome: " + isPalindrome(number));
+intln(numZeros(number));
+        reverse(number);
+        prodDigits(number);
+        sumDigits(number);
+        isPalindrome(number);
