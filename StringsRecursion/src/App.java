@@ -1,18 +1,37 @@
-import java.util.ArrayList;
-
 public class App {
-    public static void main(String[] args) throws Exception {
-        ArrayList<String> list = new ArrayList<>();
-        ArrayList<String> list2 = new ArrayList<>();
+    public static void main(String[] args) {
+        String str = "arslan khan";
 
-        list2.add("Abuzar");
-        list.add("A");
-        list.addAll(0, list2);
+        // startsWith(str);
 
-        System.out.println(list);
+        String empty = "";
+        String target = "a";
+        String skippedString = startsWiithRecursion(str, empty, 0, target);
+        System.out.println(skippedString);
+    }
 
-        // String s = "abuzar";
+    static String startsWiithRecursion(String str, String empty, int index, String target) {
+        // If index is equal to string.length, return empty
+        // Create substring starting from index
+        // If substring doesn't start with target then add it to empty string
+        // Run the function for index + 1
+        if (index == str.length()) {
+            return empty;
+        }
+        String a = str.substring(index, str.length());
+        if (a.startsWith(target) == false) {
+            empty = empty + a.charAt(0);
+        }
+        return startsWiithRecursion(str, empty, index + 1, target);
+    }
 
-        // System.out.println(s.charAt(s.length() - 1));
+    static void startsWith(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            String a = str.substring(i, str.length());
+            if (a.startsWith("apple") == true) {
+                System.out.println("True");
+                System.out.println(i);
+            }
+        }
     }
 }

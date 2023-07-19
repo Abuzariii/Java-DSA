@@ -1,3 +1,9 @@
-ar");
-        list.add("A");
-        list.addAll(0, list2);
+nameChar = name.toCharArray();
+
+        for (char i : nameChar) {
+            if (i == 'a') {
+                list.add(i);
+            }
+        }
+
+        System.out.println(list);
