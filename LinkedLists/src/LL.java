@@ -1,8 +1,24 @@
 public class LL {
+    private class Node {
+        private int value;
+        private Node next;
+
+        // Constructor
+        public Node(int value) {
+            this.value = value;
+        }
+
+        public Node(int value, Node next) {
+            this.value = value;
+            this.next = next;
+        }
+    }
+
     private Node head;
     private Node tail;
     private int size;
 
+    // Constructor
     public LL() {
         this.size = 0;
     }
@@ -37,39 +53,68 @@ public class LL {
         }
         System.out.print("END");
     }
-    // public void insert(int val, int index) {
-    // if (index == 0) {
-    // insertFirst(val);
-    // return;
-    // }
-    // if (index == size) {
-    // insertLast(val);
-    // return;
-    // }
 
-    // Node temp = head;
-    // for (int i = 1; i < index; i++) {
-    // temp = temp.next;
-    // }
-
-    // Node node = new Node(val, temp.next);
-    // temp.next = node;
-
-    // size++;
-    // }
-
-    private class Node {
-        private int value;
-        private Node next;
-
-        public Node(int value) {
-            this.value = value;
+    public void insert(int val, int index) {
+        if (index == 0) {
+            insertFirst(val);
+            return;
+        }
+        if (index == size) {
+            insertLast(val);
+            return;
         }
 
-        // public Node(int value, Node next) {
-        // this.value = value;
-        // this.next = next;
-        // }
+        Node temp = head;
+        for (int i = 1; i < index; i++) {
+            temp = temp.next;
+        }
+
+        Node node = new Node(val, temp.next);
+        temp.next = node;
+
+        size++;
+    }
+
+    public int deleteFirst() {
+        int val = head.value;
+        head = head.next;
+        if (head == null) {
+            tail = null;
+        }
+        size--;
+        return val;
+    }
+
+    public int deleteLast() {
+        if (size <= 1) {
+            return deleteFirst();
+        }
+
+        Node secondLast = get(size - 2);
+        int val = tail.value;
+        tail = secondLast;
+        tail.next = null;
+        size--;
+        return val;
+    }
+
+    public Node find(int value) {
+        Node node = head;
+        while (node != null) {
+            if (node.value == value) {
+                return node;
+            }
+            node = node.next;
+        }
+        return null;
+    }
+
+    public Node get(int index) {
+        Node node = head;
+        for (int i = 0; i < index; i++) {
+            node = node.next;
+        }
+        return node;
     }
 
     public static void main(String[] args) {
@@ -79,8 +124,10 @@ public class LL {
         first.insertLast(3);
         first.insertLast(5);
         first.insertFirst(13);
-        // first.insert(5, 3);
+        first.insert(14, 3);
 
         first.display();
+        System.out.println();
+        ;
     }
 }
