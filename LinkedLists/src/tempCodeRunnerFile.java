@@ -1,2 +1,3 @@
-30);
-        // linkedList.add(40);
+sertFirst(5);
+        // dll.insertFirst(10);
+        // dll.insertFirst(15);
