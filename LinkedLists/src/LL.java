@@ -1,9 +1,24 @@
 public class LL {
+    public static void main(String[] args) {
+        LL first = new LL();
+
+        first.insertLast(1);
+        first.insertLast(3);
+        first.insertLast(5);
+        first.insertFirst(13);
+        first.insert(14, 3);
+
+        first.display();
+        System.out.println();
+        System.out.println("Next value of value 3 : " + first.find(3).next.value);
+        System.out.println("Get the index of value 3 : " + first.get(3).value);
+    }
+
     private class Node {
         private int value;
         private Node next;
 
-        // Constructor
+        // Two Constructors
         public Node(int value) {
             this.value = value;
         }
@@ -115,19 +130,5 @@ public class LL {
             node = node.next;
         }
         return node;
-    }
-
-    public static void main(String[] args) {
-        LL first = new LL();
-
-        first.insertLast(1);
-        first.insertLast(3);
-        first.insertLast(5);
-        first.insertFirst(13);
-        first.insert(14, 3);
-
-        first.display();
-        System.out.println();
-        ;
     }
 }
