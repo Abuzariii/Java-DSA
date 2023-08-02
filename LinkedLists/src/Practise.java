@@ -1,8 +1,6 @@
 public class Practise {
     public static void main(String[] args) {
         LinkedList list = new LinkedList();
-        // list.addFirst(5);
-        // list.addFirst(10);
 
         list.addLast(5);
         list.addLast(10);
@@ -11,14 +9,10 @@ public class Practise {
         list.addLast(25);
 
         list.display();
-        list.reverseKunal();
+        list.insertAt(3, 18);
         list.display();
 
-        // list.addAfter(22, 4);
-        // list.display();
-
-        // list.replace(23, 5);
-        // list.display();
+        System.out.println("Size of the list : " + list.getSize());
     }
 }
 
@@ -116,6 +110,23 @@ class LinkedList {
         return current;
     }
 
+    public void insertAt(int index, int value) {
+        // Create a new node with given value
+        // Get the node at given index and index - 1
+        // Point the next of index-1 to new node and next of new node to index
+        // Edge case is if the index is smaller than size
+        if (index < size) {
+            Node node = new Node(value);
+            Node indexNode = get(index);
+            Node prevNode = get(index - 1);
+            prevNode.next = node;
+            node.next = indexNode;
+            size++;
+        } else {
+            System.out.println("Index exceeds the size");
+        }
+    }
+
     public void addAfter(int value, int index) {
         // Create new node with given value
         // Find the element at given index
@@ -148,7 +159,16 @@ class LinkedList {
         } else {
             System.out.println("Index exceeds the size");
         }
+    }
 
+    public int getSize() {
+        Node start = head;
+        int count = 0;
+        while (start != null) {
+            count++;
+            start = start.next;
+        }
+        return count;
     }
 
     public void display() {
