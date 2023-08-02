@@ -159,4 +159,27 @@ class LinkedList {
         System.out.println();
         System.out.println("Size : " + size);
     }
+
+    // in place reversal of linked list
+    // google, microsoft, apple, amazon:
+    // https://leetcode.com/problems/reverse-linked-list/
+    public void reverse() {
+        if (size < 2) {
+            return;
+        }
+
+        Node prev = null;
+        Node present = head;
+        Node next = present.next;
+
+        while (present != null) {
+            present.next = prev;
+            prev = present;
+            present = next;
+            if (next != null) {
+                next = next.next;
+            }
+        }
+        head = prev;
+    }
 }
