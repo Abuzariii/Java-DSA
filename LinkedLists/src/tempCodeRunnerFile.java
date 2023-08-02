@@ -1,3 +1,2 @@
-sertFirst(5);
-        // dll.insertFirst(10);
-        // dll.insertFirst(15);
+ter(22, 4);
+        list.display();
