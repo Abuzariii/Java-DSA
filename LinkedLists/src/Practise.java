@@ -5,11 +5,11 @@ public class Practise {
         list.addLast(5);
         list.addLast(10);
         list.addLast(15);
+        list.addLast(15);
         list.addLast(20);
         list.addLast(25);
+        list.addLast(30);
 
-        list.display();
-        list.insertRec(2, 22, list.head, 0, null);
         list.display();
     }
 }
@@ -284,4 +284,18 @@ class LinkedList {
         }
         head = prev;
     }
+
+    public void findMiddle() {
+        Node slow = head;
+        Node fast = head;
+        int index = 0;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            index++;
+        }
+        System.out.println("Middle Index : " + index);
+    }
+
 }

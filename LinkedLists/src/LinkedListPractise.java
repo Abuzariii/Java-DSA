@@ -281,4 +281,57 @@ class LinkedList {
         tail = node;
         tail.next = null;
     }
+
+    // Leetcode url :
+    // https://leetcode.com/problems/remove-duplicates-from-sorted-list/
+    public void removeDuplicatesSortedLL() {
+        // At every particular node, point the next of the node to the first node which
+        // is not equal to the curent node
+        Node current = head;
+        while (current != null && current.next != null) {
+            if (current.value == current.next.value) {
+                current.next = current.next.next;
+                size--;
+            } else {
+                current = current.next;
+            }
+        }
+    }
+
+    public LinkedList mergeTwoSortedLists(LinkedList list1, LinkedList list2) {
+        Node a = list1.head;
+        Node b = list2.head;
+
+        LinkedList ans = new LinkedList();
+        while (a != null && b != null) {
+            if (a.value < b.value) {
+                ans.addLast(b.value);
+            } else {
+                ans.addLast(a.value);
+            }
+        }
+
+        while (a != null) {
+            ans.addLast(a.value);
+            a = a.next;
+        }
+        while (b != null) {
+            ans.addLast(b.value);
+            b = b.next;
+        }
+        return ans;
+    }
+
+    public void findMiddle() {
+        Node slow = head;
+        Node fast = head;
+        int index = 0;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            index++;
+        }
+        System.out.println("Middle Index : " + index);
+    }
 }
