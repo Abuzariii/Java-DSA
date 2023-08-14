@@ -7,8 +7,8 @@ class TreeNode {
 
     public TreeNode(int value) {
         this.value = value;
-        this.left = null;
         this.right = null;
+        this.left = null;
     }
 }
 
@@ -80,6 +80,55 @@ public class BinaryTree {
         return minValue;
     }
 
+    public boolean isPerfect(TreeNode root) {
+        int depth = calculateDepth(root);
+        return isPerfect(root, depth, 0);
+    }
+
+    private boolean isPerfect(TreeNode node, int depth, int level) {
+        if (node == null) {
+            return true;
+        }
+
+        // If the node is a leaf, check if it's at the expected level
+        if (node.left == null && node.right == null) {
+            return level == depth - 1;
+        }
+
+        // If the node has only one child, it's not a perfect tree
+        if (node.left == null || node.right == null) {
+            return false;
+        }
+
+        // Recursively check the left and right subtrees
+        return isPerfect(node.left, depth, level + 1) && isPerfect(node.right, depth, level + 1);
+    }
+
+    private int calculateDepth(TreeNode node) {
+        int depth = 0;
+        while (node != null) {
+            depth++;
+            node = node.left;
+        }
+        return depth;
+    }
+
+    public void preorder(TreeNode root) {
+        if (root != null) {
+            System.out.print(root.value + " "); // Process the current node
+            preorder(root.left); // Traverse left subtree
+            preorder(root.right); // Traverse right subtree
+        }
+    }
+
+    public void inorder(TreeNode root) {
+        if (root != null) {
+            inorder(root.left); // Traverse left subtree
+            System.out.print(root.value + " "); // Process the current node
+            inorder(root.right); // Traverse right subtree
+        }
+    }
+
     public static void main(String[] args) {
         BinaryTree tree = new BinaryTree();
         TreeNode root = null;
@@ -89,21 +138,22 @@ public class BinaryTree {
         root = tree.insert(root, 3);
         root = tree.insert(root, 7);
         root = tree.insert(root, 20);
-        root = tree.insert(root, 18);
-        root = tree.insert(root, 23);
-        root = tree.insert(root, 16);
-        root = tree.insert(root, 29);
-        root = tree.insert(root, 10);
-        root = tree.insert(root, 0);
-        root = tree.insert(root, 1);
+        // root = tree.insert(root, 18);
+        // root = tree.insert(root, 23);
+        root = tree.insert(root, 14);
+        // root = tree.insert(root, 29);
+        // root = tree.insert(root, 19);
+        // root = tree.insert(root, 21);
 
         tree.displayTree(root, 0);
 
         // System.out.println(tree.search(root, 180));
+        // System.out.println(tree.isPerfect(root));
 
-        // root = tree.delete(root, 18);
-        // System.out.println("Tree after deleting node with value " + 18 + ":");
+        // root = tree.delete(root, 20);
+        // System.out.println("Tree after deleting node with value " + 20 + ":");
         // tree.displayTree(root, 0);
+        tree.inorder(root);
 
     }
 }
