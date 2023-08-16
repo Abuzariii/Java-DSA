@@ -132,18 +132,19 @@ public class BinaryTree {
     public static void main(String[] args) {
         BinaryTree tree = new BinaryTree();
         TreeNode root = null;
+        // root = tree.insert(root, 10);
+        // root = tree.insert(root, 5);
+        // root = tree.insert(root, 15);
+        // root = tree.insert(root, 3);
+        // root = tree.insert(root, 7);
+        // root = tree.insert(root, 20);
+        // root = tree.insert(root, 14);
+
         root = tree.insert(root, 10);
-        root = tree.insert(root, 5);
-        root = tree.insert(root, 15);
-        root = tree.insert(root, 3);
-        root = tree.insert(root, 7);
         root = tree.insert(root, 20);
-        // root = tree.insert(root, 18);
-        // root = tree.insert(root, 23);
-        root = tree.insert(root, 14);
-        // root = tree.insert(root, 29);
-        // root = tree.insert(root, 19);
-        // root = tree.insert(root, 21);
+        root = tree.insert(root, 30);
+        root = tree.insert(root, 40);
+        root = tree.insert(root, 50);
 
         tree.displayTree(root, 0);
 
@@ -153,7 +154,7 @@ public class BinaryTree {
         // root = tree.delete(root, 20);
         // System.out.println("Tree after deleting node with value " + 20 + ":");
         // tree.displayTree(root, 0);
-        tree.inorder(root);
+        // tree.inorder(root);
 
     }
 }
