@@ -1,5 +1,7 @@
 // This is both a binary and binary search tree
 
+import java.util.ArrayList;
+
 class TreeNode {
     int value;
     TreeNode left;
@@ -123,28 +125,82 @@ public class BinaryTree {
 
     public void inorder(TreeNode root) {
         if (root != null) {
-            inorder(root.left); // Traverse left subtree
-            System.out.print(root.value + " "); // Process the current node
-            inorder(root.right); // Traverse right subtree
+            inorder(root.left);
+            System.out.print(root.value + " ");
+            inorder(root.right);
         }
+    }
+
+    // Find the minimum value using a preorder traversal
+    public int findMinPreOrder(TreeNode root, ArrayList<Integer> arr) {
+        // Add all the values in the array list
+        if (root != null) {
+            arr.add(root.value);
+            findMinPreOrder(root.left, arr);
+            findMinPreOrder(root.right, arr);
+        }
+
+        // Return the smallest element in the array list
+        if (arr == null || arr.isEmpty()) {
+            throw new IllegalArgumentException("ArrayList is empty or null.");
+        }
+        int smallest = arr.get(0); // Initialize with the first element
+        for (int i = 1; i < arr.size(); i++) {
+            int current = arr.get(i);
+            if (current < smallest) {
+                smallest = current;
+            }
+        }
+        return smallest;
+    }
+
+    public int height(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int h = Math.max(height(root.left), height(root.right)) + 1;
+        return h;
+    }
+
+    public int diameterThroughtRoot(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+
+        int diameter = height(root.left) + height(root.right) + 1;
+        return diameter;
+    }
+
+    public int balanceFactor(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return height(root.left) - height(root.right);
+    }
+
+    public boolean isBalanced(TreeNode root) {
+        if (root != null) {
+            int balanceFactor = height(root.left) - height(root.right);
+            if (balanceFactor > 1 || balanceFactor < -1) {
+                return false;
+            }
+
+            isBalanced(root.left);
+            isBalanced(root.right);
+        }
+        return true;
     }
 
     public static void main(String[] args) {
         BinaryTree tree = new BinaryTree();
         TreeNode root = null;
-        // root = tree.insert(root, 10);
-        // root = tree.insert(root, 5);
-        // root = tree.insert(root, 15);
-        // root = tree.insert(root, 3);
-        // root = tree.insert(root, 7);
-        // root = tree.insert(root, 20);
-        // root = tree.insert(root, 14);
-
         root = tree.insert(root, 10);
+        root = tree.insert(root, 5);
+        root = tree.insert(root, 15);
+        root = tree.insert(root, 3);
+        root = tree.insert(root, 7);
         root = tree.insert(root, 20);
-        root = tree.insert(root, 30);
-        root = tree.insert(root, 40);
-        root = tree.insert(root, 50);
+        root = tree.insert(root, 14);
 
         tree.displayTree(root, 0);
 

@@ -3,10 +3,10 @@ class SegmentTree {
         int[] nums = { 1, 3, 5, 7, 9, 11, 8, 13, 56 };
         SegmentTree segmentTree = new SegmentTree(nums);
 
-        System.out.println(segmentTree.query(1, 5)); // Output: 24 (3 + 5 + 7 + 9)
+        System.out.println(segmentTree.query(1, 5));
 
         // segmentTree.update(2, 6);
-        // System.out.println(segmentTree.query(1, 4)); // Output: 27 (3 + 6 + 7 + 11)
+        // System.out.println(segmentTree.query(1, 4));
     }
 
     private int[] tree;
