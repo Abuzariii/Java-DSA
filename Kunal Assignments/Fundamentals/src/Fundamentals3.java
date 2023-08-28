@@ -3,7 +3,54 @@ import java.util.Scanner;
 public class Fundamentals3 {
     public static void main(String[] args) {
 
-        System.out.println(isPalindormeNum(39593));
+        printPrimesInRange(3, 15);
+
+    }
+
+    public static void printPrimesInRange(int a, int b) {
+        for (int i = a; i <= b; i++) {
+            if (i > 1) {
+                boolean isPrime = true;
+                for (int j = 2; j <= Math.sqrt(i); j++) {
+                    if (i % j == 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+                if (isPrime) {
+                    System.out.print(i + " ");
+                }
+            }
+        }
+    }
+
+    public static int factorialRec(int n, int flag) {
+        if (n == 0) {
+            return 1;
+        }
+
+        return n * factorialRec(n - 1, flag);
+    }
+
+    public static int factorial(int n) {
+        int fact = 1;
+
+        for (int i = 1; i <= n; i++) {
+            fact *= i;
+        }
+
+        return fact;
+    }
+
+    public static boolean isPrime(int n) {
+        if (n > 2) {
+            for (int i = 2; i < (n / 2) + 1; i++) {
+                if (n % i == 0) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     public static boolean isPalindormeNum(int n) {
